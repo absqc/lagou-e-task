@@ -15,5 +15,6 @@
 
 let p1 = new Promise((resolve, reject) => {
   resolve('hello ')
-}).then(value => value + 'lagou ').then(value => value + 'I ♥ U')
+}).then(value => value + 'lagou ')
+  .then(value => value + 'I ♥ U')
   .then(value => console.log(value))

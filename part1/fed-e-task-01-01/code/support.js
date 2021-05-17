@@ -23,8 +23,6 @@ class Maybe {
         this._value = value
     }
     map(fn) {
-        // console.log(fn(this._value))
-        //console.log(this.isNothing)
         return this.isNothing() ? this : Maybe.of(fn(this._value))
     }
 }
