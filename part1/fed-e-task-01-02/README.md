@@ -72,7 +72,7 @@ var obj = {
 }
 obj.fn()
 ```
-答：10,setTimeout的回调函数在执行的时候，它的this指向全局的this，因此this.a的值为10
+答：20,因为setTime的回调函数是箭头函数，因此它的作用域并不随调用的改变而改变。因此它的this指向obj,所以结果是20
 
 　
 
