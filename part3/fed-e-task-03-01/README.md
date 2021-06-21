@@ -17,7 +17,7 @@ let vm = new Vue({
  }
 })
 ```
-# 答：动态给data添加成员的时候不是响应式数据，需要通过Vue.set()方法 或者 vm.$set()方法，将数据转换成响应式的。原理是，data数据在初始化的时候，会通过Observe方法转换成响应式的getter 和setter，但是新添加的数据不会做这个转换，我们只有手动调用Vue.set()方法，动态触发observe转换才能将data的数据变成响应式的。
+ 答：动态给data添加成员的时候不是响应式数据，需要通过Vue.set()方法 或者 vm.$set()方法，将数据转换成响应式的。原理是，data数据在初始化的时候，会通过Observe方法转换成响应式的getter 和setter，但是新添加的数据不会做这个转换，我们只有手动调用Vue.set()方法，动态触发observe转换才能将data的数据变成响应式的。
  　
 
 　
