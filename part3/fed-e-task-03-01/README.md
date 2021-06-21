@@ -27,14 +27,14 @@ let vm = new Vue({
 
 
 ### 2、请简述 Diff 算法的执行过程
-# 答：diff算法主要是对比新旧vnode的差异更新dom的过程。  
-# 在snabbdom中，会通过比较两个vnode的sel和key属性判断两个vnode是否相等。如果不相等，就会创建新的dom节点，并完成替换的操作。  
-# 如果相等，调用patchVnode（）方法，patchVnode()方法就是比较两个vnode的差异并将差异更新到真实的dom中  
-# 判断新节点是否有text属性，并且不等于旧节点的text属性: 判断老节点是否有children，先移除老节点的children对应的dom元素，设置新节点对应dom元素的textContent
-# 新老节点都有children，且不相等：调用updateChildren(),对比子节点，并且更新子节点的差异。这里需要重点讲下updateChildren方法，在updateChildren中会循环比较新旧children中同级别的节点，在循环比较中有四种情况：第一种是判断新开始节点是否等于旧开始节点，第二种是判断新结束节点是否等于旧结束节点，第三种是判断旧开始节点是否等于新结束节点，第四种是判断新旧结束节点是否等于新开始节点。如果是相同节点，调用patchVnode更新dom，第三种和第四种情况需要移动dom元素。 如果以上四种情况都不满足，则通过新节点的key值去匹配老节点，如果没有匹配到则表示新的vnode是一个新元素，则调用creteEle()方法创建一个新的dom元素，并把它插入到相应的位置。如果匹配到则判断它们的sel属性是否相同，如果不同则表示有修改，则调用createEle()方法创建一个新的dom节点，并插入到对应的位置，如果相同则调用patchVnode()方法完成更新。   
-# 只有新节点有children属性：如果老节点有text属性首先清空dom元素的textContent，添加所有子节点  
-# 只有老节点有children属性：移除所有老节点  
-# 只有老节点有text属性：清空对应dom元素的textContent  
+ 答：diff算法主要是对比新旧vnode的差异更新dom的过程。  
+在snabbdom中，会通过比较两个vnode的sel和key属性判断两个vnode是否相等。如果不相等，就会创建新的dom节点，并完成替换的操作。  
+如果相等，调用patchVnode（）方法，patchVnode()方法就是比较两个vnode的差异并将差异更新到真实的dom中  
+ 判断新节点是否有text属性，并且不等于旧节点的text属性: 判断老节点是否有children，先移除老节点的children对应的dom元素，设置新节点对应dom元素的textContent  
+新老节点都有children，且不相等：调用updateChildren(),对比子节点，并且更新子节点的差异。这里需要重点讲下updateChildren方法，在updateChildren中会循环比较新旧children中同级别的节点，在循环比较中有四种情况：第一种是判断新开始节点是否等于旧开始节点，第二种是判断新结束节点是否等于旧结束节点，第三种是判断旧开始节点是否等于新结束节点，第四种是判断新旧结束节点是否等于新开始节点。如果是相同节点，调用patchVnode更新dom，第三种和第四种情况需要移动dom元素。 如果以上四种情况都不满足，则通过新节点的key值去匹配老节点，如果没有匹配到则表示新的vnode是一个新元素，则调用creteEle()方法创建一个新的dom元素，并把它插入到相应的位置。如果匹配到则判断它们的sel属性是否相同，如果不同则表示有修改，则调用createEle()方法创建一个新的dom节点，并插入到对应的位置，如果相同则调用patchVnode()方法完成更新。   
+只有新节点有children属性：如果老节点有text属性首先清空dom元素的textContent，添加所有子节点  
+只有老节点有children属性：移除所有老节点  
+只有老节点有text属性：清空对应dom元素的textContent  
 　
 
 　
