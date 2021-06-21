@@ -1,3 +1,5 @@
 #忽略 node_modules
 part1/fed-e-task-01-01/code/node_modules
 part1/fed-e-task-01-01/code/node_modules/lodash
+lagoufed-e-task/part2/fed-e-task-02-02/code/vue-app-base/node_modules
+lagoufed-e-task/part2/fed-e-task-02-02/code/vue-app-base/dist
